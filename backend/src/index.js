@@ -44,8 +44,6 @@ app.post(
   body("boatName").isString().notEmpty(),
   body("constructionYear").isInt(),
   body("serialNumber").isInt(),
-  body("material").isString().notEmpty(),
-  body("boatType").isString().notEmpty(),
   (req, res) => {
     const validationError = validationResult(req);
     if (!validationError.isEmpty()) {
