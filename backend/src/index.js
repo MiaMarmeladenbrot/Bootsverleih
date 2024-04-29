@@ -13,7 +13,7 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 
-// Endpoints Boats
+//* Endpoints Boats
 // GET all boats
 app.get("/api/v1/boats", (_, res) => {
   Boat.find({})
@@ -116,6 +116,97 @@ app.delete("/api/v1/boats/:boatId", (req, res) => {
       res
         .status(500)
         .json({ err, message: "Could not delete this boat", boatId });
+    });
+});
+
+//* Endpoints Reservations
+// GET all reservations
+app.get("/api/v1/reservations", (_, res) => {
+  Reservation.find({})
+    .then((reservations) => res.json(reservations))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ err, message: "Could not get all reservations" });
+    });
+});
+
+// POST new reservation
+app.post(
+  "/api/v1/boats/:boatId/reservations",
+  body("startDate").isString(),
+  body("endDate").isString(),
+  (req, res) => {
+    const validationError = validationResult(req);
+    if (!validationError.isEmpty()) {
+      return res
+        .status(400)
+        .json({ message: "Data not valid", validationError });
+    }
+
+    const newReservation = {
+      boatId: req.params.boatId,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+    };
+
+    Reservation.create(newReservation)
+      .then((addedReservation) => res.json(addedReservation || {}))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ err, message: "Could not add new reservation" });
+      });
+  }
+);
+
+// PATCH one reservation
+app.patch(
+  "/api/v1/reservations/:reservationId",
+  body("boatId").notEmpty(),
+  body("startDate").isString().notEmpty(),
+  body("endDate").isString().notEmpty(),
+  (req, res) => {
+    const validationError = validationResult(req);
+    if (!validationError.isEmpty()) {
+      return res
+        .status(400)
+        .json({ message: "Data not valid", validationError });
+    }
+
+    const reservationId = req.params.reservationId;
+    const updateReservationInfo = {
+      boatId: req.body.boatId,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+    };
+
+    // By default, findOneAndUpdate() returns the document as it was before update was applied.
+    // You should set the new option to true to return the document after update was applied.
+    Reservation.findByIdAndUpdate(reservationId, updateReservationInfo, {
+      new: true,
+    })
+      .then((updatedReservation) => res.json(updatedReservation || {}))
+      .catch((err) => {
+        console.log(err);
+        res
+          .status(500)
+          .json({ err, message: "Could not update this boat", reservationId });
+      });
+  }
+);
+
+// DELETE one reservation
+app.delete("/api/v1/reservations/:reservationId", (req, res) => {
+  const reservationId = req.params.reservationId;
+
+  Reservation.findByIdAndDelete(reservationId)
+    .then((deletedReservation) => res.json(deletedReservation || {}))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        err,
+        message: "Could not delete this reservation",
+        reservationId,
+      });
     });
 });
 
