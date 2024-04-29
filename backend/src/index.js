@@ -41,6 +41,7 @@ app.get("/api/v1/boats/:boatId", (req, res) => {
 // POST new boat
 app.post(
   "/api/v1/boats",
+  body("boatName").isString().notEmpty(),
   body("constructionYear").isInt(),
   body("serialNumber").isInt(),
   body("material").isString().notEmpty(),
@@ -54,6 +55,7 @@ app.post(
     }
 
     const newBoat = {
+      boatName: req.body.boatName,
       constructionYear: req.body.constructionYear,
       serialNumber: req.body.serialNumber,
       material: req.body.material,
@@ -72,6 +74,7 @@ app.post(
 // PATCH one boat
 app.patch(
   "/api/v1/boats/:boatId",
+  body("boatName").isString().notEmpty(),
   body("constructionYear").isInt(),
   body("serialNumber").isInt(),
   body("material").isString().notEmpty(),
@@ -86,6 +89,7 @@ app.patch(
 
     const boatId = req.params.boatId;
     const updateBoatInfo = {
+      boatName: req.body.boatName,
       constructionYear: req.body.constructionYear,
       serialNumber: req.body.serialNumber,
       material: req.body.material,
