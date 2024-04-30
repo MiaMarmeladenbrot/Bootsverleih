@@ -13,16 +13,20 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  border-radius: 10px;
 }
+
 .our-res {
-  background: url("/img/reserved.jpeg") no-repeat center;
+  background: url("/img/reserved.jpeg") no-repeat bottom;
   background-size: cover;
   width: 40vw;
   height: 40vw;
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  border-radius: 10px;
 }
+
 .our-res div,
 .our-boats div {
   background-color: rgba(255, 255, 255, 0.379);

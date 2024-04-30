@@ -31,21 +31,30 @@ const BoatDetails = () => {
   }, []);
 
   return (
-    <section className="boat-details">
-      <h2>{boatDetails.boatName}</h2>
-      <p>Typ: {boatDetails.boatType}</p>
-      <p>Material: {boatDetails.material}</p>
-      <p>Baujahr: {boatDetails.constructionYear}</p>
-      <p>Seriennummer: {boatDetails.serialNumber}</p>
-      <DeleteBoat boatId={boatDetails._id} />
-      <EditBoat boat={boatDetails} />
-      <h2>Reservierungen</h2>
-      {boatReservations?.map((item) => (
-        <ReservationCard key={item._id} reservation={item} />
-      ))}
-    </section>
+    <>
+      <section className="boat-details">
+        <img src="/img/seegelboot.jpeg" alt="Segelboot" />
+        <section>
+          <article>
+            <h2>{boatDetails.boatName}</h2>
+            <p>Typ: {boatDetails.boatType}</p>
+            <p>Material: {boatDetails.material}</p>
+            <p>Baujahr: {boatDetails.constructionYear}</p>
+            <p>Seriennummer: {boatDetails.serialNumber}</p>
 
-    // Show all reservations for boatId
+            <div>
+              <DeleteBoat boatId={boatDetails._id} />
+              <EditBoat boat={boatDetails} />
+            </div>
+          </article>
+
+          <h2>Reservierungen</h2>
+          {boatReservations?.map((item) => (
+            <ReservationCard key={item._id} reservation={item} />
+          ))}
+        </section>
+      </section>
+    </>
   );
 };
 

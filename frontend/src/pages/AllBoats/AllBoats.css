@@ -4,17 +4,22 @@
   gap: 2vw;
   margin-bottom: 3vw;
 }
+
 .single-boat {
   display: flex;
   flex-direction: column;
   background-color: #bde0fe;
   padding-bottom: 1vw;
+  border-radius: 10px;
+  overflow: hidden;
 }
+
 .single-boat h2,
 .single-boat p {
   padding-left: 1vw;
   margin-bottom: 0.3vw;
 }
+
 .single-boat img {
   width: 100%;
 }
