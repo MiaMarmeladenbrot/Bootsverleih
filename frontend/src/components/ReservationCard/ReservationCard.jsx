@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { backendURL } from "../../api/api";
 import "./ReservationCard.css";
 import EditReservation from "../EditReservation/EditReservation";
+import DeleteReservation from "../DeleteReservation/DeleteReservation";
 
 const ReservationCard = ({ reservation }) => {
   // state for boat details
@@ -23,6 +24,7 @@ const ReservationCard = ({ reservation }) => {
       <Link to={`/boats/${reservation.boatId}`}>
         <p>{boatDetails?.boatName}</p>
       </Link>
+      <DeleteReservation reservationId={reservation._id} />
       <EditReservation reservation={reservation} />
     </div>
   );
