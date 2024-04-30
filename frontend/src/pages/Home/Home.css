@@ -14,6 +14,7 @@
   align-items: flex-end;
   justify-content: center;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .our-res {
@@ -25,6 +26,7 @@
   align-items: flex-end;
   justify-content: center;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .our-res div,
