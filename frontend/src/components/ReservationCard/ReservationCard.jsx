@@ -16,9 +16,6 @@ const ReservationCard = ({ reservation }) => {
       .catch((err) => console.log("Failed to fetch Boat Details", err));
   }, []);
 
-  console.log(reservation);
-  console.log(reservation.endDate);
-
   return (
     <div className="reservation-card">
       <p>Vom {new Date(reservation.startDate).toLocaleDateString()}</p>

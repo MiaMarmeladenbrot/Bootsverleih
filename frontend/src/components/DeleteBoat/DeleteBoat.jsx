@@ -11,8 +11,7 @@ const DeleteBoat = ({ boatId }) => {
       )
       .catch((err) => console.log("Could not delete Boat", err));
   };
-  console.log(boatId);
-  console.log(allBoats);
+
   return (
     <svg
       onClick={deleteBoat}

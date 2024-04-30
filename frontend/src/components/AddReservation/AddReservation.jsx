@@ -26,6 +26,10 @@ const AddReservation = () => {
   const addReservation = (e) => {
     e.preventDefault();
 
+    if (new Date() > startDate || startDate > endDate) {
+      return setError("Kein valides Datum");
+    }
+
     const newReservation = {
       startDate,
       endDate,

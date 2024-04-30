@@ -15,7 +15,7 @@ const BoatDetails = () => {
       .then((data) => setBoatDetails(data))
       .catch((err) => console.log("Fail to fetch Boat Details", err));
   }, []);
-  console.log(boatDetails);
+
   return (
     <section className="boat-details">
       <h2>{boatDetails.boatName}</h2>
