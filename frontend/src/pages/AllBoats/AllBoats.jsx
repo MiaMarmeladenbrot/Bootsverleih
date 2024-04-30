@@ -1,17 +1,18 @@
 import "./AllBoats.css";
 import { fetchAllBoatsContext } from "../../context/Context";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import DeleteBoat from "../../components/DeleteBoat/DeleteBoat";
 import AddBoat from "../../components/AddBoat/AddBoat";
 import { Link } from "react-router-dom";
 import EditBoat from "../../components/EditBoat/EditBoat";
+
 const AllBoats = () => {
-  const { allBoats, setAllBoats } = useContext(fetchAllBoatsContext);
+  // global context for all boats
+  const { allBoats } = useContext(fetchAllBoatsContext);
 
   return (
     <>
       <section className="all-boats">
-        {/* Show all boats */}
         {allBoats?.map((boat) => (
           <div className="single-boat" key={boat._id}>
             <Link to={`/boats/${boat._id}`}>
@@ -27,14 +28,14 @@ const AllBoats = () => {
               </p>
             </Link>
             <div className="change-boat">
-              <DeleteBoat boatId={boat._id} />
               <EditBoat boat={boat} />
+              <DeleteBoat boatId={boat._id} />
             </div>
           </div>
         ))}
-
-        {/* form to add a boat */}
       </section>
+
+      {/* form to add a boat */}
       <AddBoat />
     </>
   );

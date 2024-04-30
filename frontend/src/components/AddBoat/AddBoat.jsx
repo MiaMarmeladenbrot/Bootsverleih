@@ -17,7 +17,7 @@ const AddBoat = () => {
   // global fetch for all boats
   const { allBoats, setAllBoats } = useContext(fetchAllBoatsContext);
 
-  // function to add a boat
+  // function to add a boat - only if all input fields are filled
   const addBoat = (e) => {
     e.preventDefault();
 
@@ -114,7 +114,8 @@ const AddBoat = () => {
           value={seriennummer}
         />
 
-        {error.length > 0 ? <p>{error}</p> : ""}
+        {/* error message to user if an input field is empty */}
+        {error.length > 0 ? <p className="error">{error}</p> : ""}
 
         <button onClick={addBoat}>Boot hinzufügen</button>
       </form>

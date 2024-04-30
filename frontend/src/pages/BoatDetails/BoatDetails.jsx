@@ -1,28 +1,34 @@
 import "./BoatDetails.css";
-
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { backendURL } from "../../api/api";
+import { fetchAllReservationsContext } from "../../context/Context";
 import DeleteBoat from "../../components/DeleteBoat/DeleteBoat";
 import EditBoat from "../../components/EditBoat/EditBoat";
-import { fetchAllReservationsContext } from "../../context/Context";
 import ReservationCard from "../../components/ReservationCard/ReservationCard";
-const BoatDetails = () => {
-  const [boatDetails, setBoatDetails] = useState([]);
-  const [boatReservations, setBoatReservations] = useState([]);
-  const { boatId } = useParams();
-  const { allReservations, setAllReservations } = useContext(
-    fetchAllReservationsContext
-  );
 
+const BoatDetails = () => {
+  // global context for fetching all reservations
+  const { allReservations } = useContext(fetchAllReservationsContext);
+
+  // state for details of each boat
+  const [boatDetails, setBoatDetails] = useState([]);
+
+  // state for all reservations of this boat
+  const [boatReservations, setBoatReservations] = useState([]);
+
+  // get id of the boat from url
+  const { boatId } = useParams();
+
+  // filter all reservations to find all reservations for this boat
   useEffect(() => {
     const filterReservations = allReservations.filter(
       (reservation) => reservation.boatId === boatDetails._id
     );
     setBoatReservations(filterReservations);
   }, [boatDetails]);
-  console.log(boatReservations);
 
+  // fetch boat details of this boat
   useEffect(() => {
     fetch(`${backendURL}/api/v1/boats/${boatId}`)
       .then((res) => res.json())
@@ -43,8 +49,8 @@ const BoatDetails = () => {
             <p>Seriennummer: {boatDetails.serialNumber}</p>
 
             <div>
-              <DeleteBoat boatId={boatDetails._id} />
               <EditBoat boat={boatDetails} />
+              <DeleteBoat boatId={boatDetails._id} />
             </div>
           </article>
 

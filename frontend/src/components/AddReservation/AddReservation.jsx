@@ -7,7 +7,7 @@ import {
 
 const AddReservation = () => {
   // global fetch for all boats
-  const { allBoats, setAllBoats } = useContext(fetchAllBoatsContext);
+  const { allBoats } = useContext(fetchAllBoatsContext);
 
   // global fetch for all reservations
   const { allReservations, setAllReservations } = useContext(
@@ -22,7 +22,7 @@ const AddReservation = () => {
   // state for error message
   const [error, setError] = useState("");
 
-  // function to add a reservation
+  // function to add a reservation - only if the date is later than today and startDate is before endDate
   const addReservation = (e) => {
     e.preventDefault();
 
@@ -79,7 +79,8 @@ const AddReservation = () => {
         ))}
       </select>
 
-      {error.length > 0 ? <p>{error}</p> : ""}
+      {/* error message to user if date is in the past or startdate is after enddate */}
+      {error.length > 0 ? <p className="error">{error}</p> : ""}
 
       <button onClick={addReservation}>Reservierung hinzufügen</button>
     </form>

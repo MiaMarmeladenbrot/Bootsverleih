@@ -1,9 +1,6 @@
 import { useContext, useState } from "react";
 import { backendURL } from "../../api/api";
-import {
-  fetchAllBoatsContext,
-  fetchAllReservationsContext,
-} from "../../context/Context";
+import { fetchAllReservationsContext } from "../../context/Context";
 import "./EditReservation.css";
 
 const EditReservation = ({ reservation }) => {
@@ -17,15 +14,12 @@ const EditReservation = ({ reservation }) => {
   // state for error message
   const [error, setError] = useState("");
 
-  // global fetch for all boats
-  const { allBoats, setAllBoats } = useContext(fetchAllBoatsContext);
-
   // global fetch for all reservations
   const { allReservations, setAllReservations } = useContext(
     fetchAllReservationsContext
   );
 
-  // function to add a boat
+  // function to edit a reservation - only if the date is later than today and startDate is before endDate
   const editReservation = (e) => {
     e.preventDefault();
 
@@ -84,7 +78,8 @@ const EditReservation = ({ reservation }) => {
           onChange={(e) => setEndDate(e.target.value)}
         />
 
-        {error.length > 0 ? <p>{error}</p> : ""}
+        {/* error message to user if date is in the past or startdate is after enddate */}
+        {error.length > 0 ? <p className="error">{error}</p> : ""}
 
         <button onClick={editReservation}>Reservierung anpassen</button>
       </form>

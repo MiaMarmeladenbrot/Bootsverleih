@@ -19,7 +19,7 @@ const EditBoat = ({ boat }) => {
   // global fetch for all boats
   const { allBoats, setAllBoats } = useContext(fetchAllBoatsContext);
 
-  // function to add a boat
+  // function to add a boat - only if all input fields are filled
   const editBoat = (e) => {
     e.preventDefault();
 
@@ -57,7 +57,7 @@ const EditBoat = ({ boat }) => {
     location.reload();
   };
 
-  // function to toggle edit form and fill in inputs
+  // function to toggle edit form and fill in inputs with boat details from DB
   const showEditWithInputs = () => {
     setShowEdit(!showEdit);
 
@@ -136,7 +136,8 @@ const EditBoat = ({ boat }) => {
           value={seriennummer}
         />
 
-        {error.length > 0 ? <p>{error}</p> : ""}
+        {/* Error Message to user to fill in all input fields */}
+        {error.length > 0 ? <p className="error">{error}</p> : ""}
 
         <button onClick={editBoat}>Boot anpassen</button>
       </form>
