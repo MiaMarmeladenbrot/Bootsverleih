@@ -1,0 +1,12 @@
+.edit-boat {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  max-width: 400px;
+
+  display: none;
+}
+
+.edit-boat.show {
+  display: flex;
+}
