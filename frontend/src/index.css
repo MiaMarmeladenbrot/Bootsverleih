@@ -33,19 +33,39 @@ html {
   background-color: #a2d2ff;
   padding: 0 3vw;
 }
-/* Formular for add and edit Boat */
+
+/* Formular for add and edit boats & reservations */
 .boat-form {
   display: flex;
   flex-direction: column;
   gap: 1vw;
   width: 20vw;
   padding-left: 4vw;
-
 }
+
 .boat-form input,
 .boat-form select,
 .boat-form button {
   padding: 0.4vw;
   border-radius: 10px;
   border: none;
+}
+
+.boat-form button {
+  background-color: #c89ece;
+  color: white;
+}
+
+.boat-form.show {
+  display: flex;
+  justify-content: center;
+
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.793);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.boat-form.hide {
+  display: none;
 }

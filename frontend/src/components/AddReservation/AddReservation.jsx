@@ -47,7 +47,7 @@ const AddReservation = () => {
   };
 
   return (
-    <form className="add-boat">
+    <form className="boat-form">
       <h2>Reservierung hinzufügen</h2>
 
       <input

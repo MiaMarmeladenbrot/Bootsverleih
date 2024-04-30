@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import ReservationCard from "../../components/ReservationCard/ReservationCard";
 import AddReservation from "../../components/AddReservation/AddReservation";
 
+import "./AllReservations.css";
+
 const AllReservations = () => {
   // global fetch all reservations
   const { allReservations, setAllReservations } = useContext(
@@ -13,9 +15,11 @@ const AllReservations = () => {
 
   return (
     <section className="all-reservations">
-      {allReservations.map((reservation) => (
-        <ReservationCard key={reservation._id} reservation={reservation} />
-      ))}
+      <article>
+        {allReservations.map((reservation) => (
+          <ReservationCard key={reservation._id} reservation={reservation} />
+        ))}
+      </article>
       <AddReservation />
     </section>
   );

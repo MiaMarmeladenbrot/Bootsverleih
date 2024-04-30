@@ -24,8 +24,10 @@ const ReservationCard = ({ reservation }) => {
       <Link to={`/boats/${reservation.boatId}`}>
         <p>{boatDetails?.boatName}</p>
       </Link>
-      <DeleteReservation reservationId={reservation._id} />
-      <EditReservation reservation={reservation} />
+      <div className="change-res">
+        <DeleteReservation reservationId={reservation._id} />
+        <EditReservation reservation={reservation} />
+      </div>
     </div>
   );
 };

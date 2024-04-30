@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { backendURL } from "../../api/api";
 import { fetchAllBoatsContext } from "../../context/Context";
-import "./EditBoat.css";
 
 const EditBoat = ({ boat }) => {
   // state to toggle edit form
