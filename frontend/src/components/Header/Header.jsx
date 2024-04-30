@@ -9,16 +9,11 @@ const Header = () => {
         </Link>
         <div className="nav-right">
           <Link to={"/boats"}>
-            <p>All Boats</p>
+            <p>Alle Boote</p>
           </Link>
-          <Link>
-            <p>Add a Boat</p>
-          </Link>
+
           <Link to={"/reservations"}>
-            <p>All Reservations</p>
-          </Link>
-          <Link>
-            <p>Add Reservation</p>
+            <p>Alle Reservierungen</p>
           </Link>
         </div>
       </nav>
