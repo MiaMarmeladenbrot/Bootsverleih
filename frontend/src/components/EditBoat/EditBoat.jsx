@@ -3,20 +3,7 @@ import { backendURL } from "../../api/api";
 import { fetchAllBoatsContext } from "../../context/Context";
 import "./EditBoat.css";
 
-const EditBoat = ({
-  boat,
-  //   name,
-  //   setName,
-  //   typ,
-  //   setTyp,
-  //   material,
-  //   setMaterial,
-  //   baujahr,
-  //   setBaujahr,
-  //   seriennummer,
-  //   setSeriennummer,
-}) => {
-  console.log(boat);
+const EditBoat = ({ boat }) => {
   // state to toggle edit form
   const [showEdit, setShowEdit] = useState(false);
 

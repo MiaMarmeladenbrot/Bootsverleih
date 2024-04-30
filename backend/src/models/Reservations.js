@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const reservationsSchema = new mongoose.Schema(
   {
     boatId: { type: mongoose.Types.ObjectId, ref: "Boat", required: true },
-    startDate: { type: String, required: true },
-    endDate: { type: String, required: true },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
   },
   { collection: "reservations", timestamps: true }
 );

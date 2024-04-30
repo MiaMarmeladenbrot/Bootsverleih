@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { backendURL } from "../../api/api";
 import "./ReservationCard.css";
+import EditReservation from "../EditReservation/EditReservation";
 
 const ReservationCard = ({ reservation }) => {
   // state for boat details
@@ -15,13 +16,17 @@ const ReservationCard = ({ reservation }) => {
       .catch((err) => console.log("Failed to fetch Boat Details", err));
   }, []);
 
+  console.log(reservation);
+  console.log(reservation.endDate);
+
   return (
     <div className="reservation-card">
-      <p>Vom {reservation.startDate}</p>
-      <p>bis {reservation.endDate}</p>{" "}
+      <p>Vom {new Date(reservation.startDate).toLocaleDateString()}</p>
+      <p>bis {new Date(reservation.endDate).toLocaleDateString()}</p>
       <Link to={`/boats/${reservation.boatId}`}>
         <p>{boatDetails?.boatName}</p>
       </Link>
+      <EditReservation reservation={reservation} />
     </div>
   );
 };

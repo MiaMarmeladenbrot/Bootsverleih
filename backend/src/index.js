@@ -163,9 +163,7 @@ app.post(
 // PATCH one reservation
 app.patch(
   "/api/v1/reservations/:reservationId",
-  body("boatId").notEmpty(),
-  body("startDate").isString().notEmpty(),
-  body("endDate").isString().notEmpty(),
+
   (req, res) => {
     const validationError = validationResult(req);
     if (!validationError.isEmpty()) {
@@ -176,7 +174,6 @@ app.patch(
 
     const reservationId = req.params.reservationId;
     const updateReservationInfo = {
-      boatId: req.body.boatId,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
     };
