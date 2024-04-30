@@ -1,3 +1,29 @@
-.all-boats div {
-  margin-bottom: 1rem;
+.all-boats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+  margin-bottom: 3vw;
+}
+.single-boat {
+  display: flex;
+  flex-direction: column;
+  background-color: #bde0fe;
+  padding-bottom: 1vw;
+}
+.single-boat h2,
+.single-boat p {
+  padding-left: 1vw;
+  margin-bottom: 0.3vw;
+}
+.single-boat img {
+  width: 100%;
+}
+
+.change-boat {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 1vw;
+  padding: 0.5vw 0;
+  padding-inline: 1vw;
 }

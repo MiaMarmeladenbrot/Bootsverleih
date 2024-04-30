@@ -1,0 +1,32 @@
+.overview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10vw;
+}
+
+.our-boats {
+  background: url("/img/boatdasboard.jpeg") no-repeat center;
+  background-size: cover;
+  width: 40vw;
+  height: 40vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.our-res {
+  background: url("/img/reserved.jpeg") no-repeat center;
+  background-size: cover;
+  width: 40vw;
+  height: 40vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.our-res div,
+.our-boats div {
+  background-color: rgba(255, 255, 255, 0.379);
+  width: 100%;
+  text-align: center;
+  padding: 1vw;
+}

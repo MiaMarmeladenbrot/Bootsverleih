@@ -56,67 +56,69 @@ const AddBoat = () => {
   };
 
   return (
-    <form className="add-boat">
-      <h2>Add a boat</h2>
+    <section className="add-boat-wrapper">
+      <form className="boat-form">
+        <h2>Boot hinzufügen</h2>
 
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
-      <select
-        name="typ"
-        id="typ"
-        onChange={(e) => setTyp(e.target.value)}
-        value={typ}
-        defaultValue={""}
-      >
-        <option value="" disabled>
-          Typ
-        </option>
-        <option value="Segelboot">Segelboot</option>
-        <option value="Tretboot">Tretboot</option>
-        <option value="Luftkissenboot">Luftkissenboot</option>
-        <option value="Geisterschiff">Geisterschiff</option>
-        <option value="Containerschiff">Containerschiff</option>
-      </select>
+        <select
+          name="typ"
+          id="typ"
+          onChange={(e) => setTyp(e.target.value)}
+          value={typ}
+          defaultValue={""}
+        >
+          <option value="" disabled>
+            Typ
+          </option>
+          <option value="Segelboot">Segelboot</option>
+          <option value="Tretboot">Tretboot</option>
+          <option value="Luftkissenboot">Luftkissenboot</option>
+          <option value="Geisterschiff">Geisterschiff</option>
+          <option value="Containerschiff">Containerschiff</option>
+        </select>
 
-      <select
-        name="material"
-        id="material"
-        onChange={(e) => setMaterial(e.target.value)}
-        value={material}
-        defaultValue={""}
-      >
-        <option value="" disabled>
-          Material
-        </option>
-        <option value="Holz">Holz</option>
-        <option value="GFK">GFK</option>
-        <option value="Pappe">Pappe</option>
-        <option value="Seelen">Seelen</option>
-      </select>
+        <select
+          name="material"
+          id="material"
+          onChange={(e) => setMaterial(e.target.value)}
+          value={material}
+          defaultValue={""}
+        >
+          <option value="" disabled>
+            Material
+          </option>
+          <option value="Holz">Holz</option>
+          <option value="GFK">GFK</option>
+          <option value="Pappe">Pappe</option>
+          <option value="Seelen">Seelen</option>
+        </select>
 
-      <input
-        type="number"
-        placeholder="Baujahr"
-        onChange={(e) => setBaujahr(e.target.value)}
-        value={baujahr}
-      />
+        <input
+          type="number"
+          placeholder="Baujahr"
+          onChange={(e) => setBaujahr(e.target.value)}
+          value={baujahr}
+        />
 
-      <input
-        type="number"
-        placeholder="Seriennummer"
-        onChange={(e) => setSeriennummer(e.target.value)}
-        value={seriennummer}
-      />
+        <input
+          type="number"
+          placeholder="Seriennummer"
+          onChange={(e) => setSeriennummer(e.target.value)}
+          value={seriennummer}
+        />
 
-      {error.length > 0 ? <p>{error}</p> : ""}
+        {error.length > 0 ? <p>{error}</p> : ""}
 
-      <button onClick={addBoat}>Boot hinzufügen</button>
-    </form>
+        <button onClick={addBoat}>Boot hinzufügen</button>
+      </form>
+    </section>
   );
 };
 

@@ -1,3 +1,6 @@
+header {
+  padding: 1vw 0;
+}
 nav {
   display: flex;
   align-items: center;
@@ -5,7 +8,17 @@ nav {
 }
 .nav-right {
   display: flex;
+  align-items: center;
+  gap: 2vw;
 }
 .nav-right p {
   padding: 0 1vw;
+}
+
+nav h2 {
+  font-family: pacifico;
+}
+.active {
+  fill: #f5699c80;
+  color: #f5699c80;
 }

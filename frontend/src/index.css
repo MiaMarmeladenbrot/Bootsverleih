@@ -1,3 +1,16 @@
+@font-face {
+  font-family: robotoreg;
+  src: url("/font/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: robotobold;
+  src: url("/font/Roboto-Bold.ttf");
+}
+@font-face {
+  font-family: pacifico;
+  src: url("/font/Pacifico-Regular.ttf");
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -13,4 +26,26 @@ h1,
 h2,
 h3 {
   margin-bottom: 1.2rem;
+}
+
+html {
+  font-family: robotoreg;
+  background-color: #a2d2ff;
+  padding: 0 3vw;
+}
+/* Formular for add and edit Boat */
+.boat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  width: 20vw;
+  padding-left: 4vw;
+
+}
+.boat-form input,
+.boat-form select,
+.boat-form button {
+  padding: 0.4vw;
+  border-radius: 10px;
+  border: none;
 }

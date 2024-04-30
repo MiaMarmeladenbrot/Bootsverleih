@@ -15,19 +15,22 @@ const Home = () => {
 
   return (
     <section className="home">
-      <h1>Home</h1>
       <section className="overview">
         <Link to="/boats">
-          <div>
-            <h2>Unsere Boote</h2>
-            <p>{allBoats.length}</p>
+          <div className="our-boats">
+            <div>
+              <h2>Unsere Boote</h2>
+              <h2>{allBoats.length}</h2>
+            </div>
           </div>
         </Link>
 
         <Link to="/reservations">
-          <div>
-            <h2>Unsere Reservierungen</h2>
-            <p>{allReservations.length}</p>
+          <div className="our-res">
+            <div>
+              <h2>Unsere Reservierungen</h2>
+              <h2>{allReservations.length}</h2>
+            </div>
           </div>
         </Link>
       </section>
