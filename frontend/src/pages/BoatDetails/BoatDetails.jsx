@@ -3,6 +3,8 @@ import "./BoatDetails.css";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { backendURL } from "../../api/api";
+import DeleteBoat from "../../components/DeleteBoat/DeleteBoat";
+import EditBoat from "../../components/EditBoat/EditBoat";
 const BoatDetails = () => {
   const [boatDetails, setBoatDetails] = useState([]);
   const { boatId } = useParams();
@@ -21,8 +23,10 @@ const BoatDetails = () => {
       <p>Material: {boatDetails.material}</p>
       <p>Baujahr: {boatDetails.constructionYear}</p>
       <p>Seriennummer: {boatDetails.serialNumber}</p>
+      <DeleteBoat boatId={boatDetails._id} />
+      <EditBoat boat={boatDetails} />
     </section>
-    // Components Edit Details
+
     // Show all reservations for boatId
   );
 };
