@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { backendURL } from "../../api/api";
 import {
   fetchAllBoatsContext,
@@ -21,6 +21,41 @@ const AddReservation = () => {
 
   // state for error message
   const [error, setError] = useState("");
+
+  // - ==================
+  // # Idee, um vorab zu prüfen, welche Boote zu welchen Zeiten reserviert sind und dann nur entsprechend verfügbare Boote anzuzeigen
+  // state for all boats to save the filtered boats in and map this instead of allBoats for select/options
+  const [notReservedBoats, setNotReservedBoats] = useState([]);
+
+  // console.log(startDate);
+  // console.log(new Date(startDate).toLocaleDateString());
+  // console.log(endDate);
+  // console.log(allReservations);
+
+  // erst mal nur das genaue Datum rausfiltern für Startdatum und Enddatum:
+  const filteredDates = allReservations.filter(
+    (res) =>
+      new Date(res.startDate).toLocaleDateString() ===
+        new Date(startDate).toLocaleDateString() ||
+      new Date(res.endDate).toLocaleDateString() ===
+        new Date(endDate).toLocaleDateString()
+  );
+  console.log("filteredDates", filteredDates); // funzt! findet alle Reservierungen, die das eingegebene Startdatum oder Enddatum als Datum enthalten
+
+  // boatIds aus dem gefundenen array der filteredData mit allBoats abgleichen und nur die Boote rausfiltern, die nicht in filteredData.boatId enthalten sind
+  // # das funzt noch nicht ... Ergebnis enthält trotzdem das rausgefilterte Boot ...
+  useEffect(() => {
+    const filterBoats = allBoats.filter(
+      (boat) => boat._id !== filteredDates.boatId
+    );
+
+    setNotReservedBoats(filterBoats);
+  }, [startDate, endDate]);
+
+  console.log("all boats", allBoats);
+  console.log("notReservedBoats", notReservedBoats);
+
+  //- ====================
 
   // function to add a reservation - only if the date is later than today and startDate is before endDate
   const addReservation = (e) => {
@@ -54,6 +89,7 @@ const AddReservation = () => {
         type="date"
         required
         onChange={(e) => setStartDate(e.target.value)}
+        // onChange={changeStart}
         value={startDate}
       />
 
@@ -61,6 +97,7 @@ const AddReservation = () => {
         type="date"
         required
         onChange={(e) => setEndDate(e.target.value)}
+        // onChange={changeEnd}
         value={endDate}
       />
 
@@ -71,8 +108,8 @@ const AddReservation = () => {
         onChange={(e) => setBoatId(e.target.value)}
         value={boatId}
       >
-        <option value="">Welches Boot?</option>
-        {allBoats.map((boat) => (
+        <option value="">Verfügbare Boote</option>
+        {notReservedBoats.map((boat) => (
           <option key={boat._id} value={boat._id}>
             {boat.boatName}
           </option>
